@@ -1,6 +1,9 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        nums.sort()
-        left = 0
-        right = len(nums) - 1
-        return nums[(right-left)//2]
+        count = 0
+        candidate = None
+        for num in nums:
+            if count == 0:
+                candidate = num
+            count +=1 if num == candidate else -1
+        return candidate
